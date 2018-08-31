@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,11 +11,25 @@ public class Movement : MonoBehaviour
     public bool isGrounded;
     public int maxJumps = 1;
     public int remainingJumps = 1;
+
+    public int damageAmount = 1;
+    public bool enemyHit = false;
     // Update is called once per frame
 
     void Update()
     {
         PlayerMove();
+
+         if (Input.GetKeyDown(KeyCode.Mouse1))
+        {
+            print("Det går att skjuta!");
+            if (enemyHit == true)
+            {
+                //takeDamageScript.TakingDamage(damageAmount);
+                GetComponent<TakeDamage>().TakingDamage(damageAmount);
+
+            }
+        }
     }
 
     void PlayerMove()
